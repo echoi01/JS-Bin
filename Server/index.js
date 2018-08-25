@@ -76,15 +76,36 @@ app.get('/webworker/:name', (req, res) => {
     });
 });
 
-binRouter.get('/:name', (req, res, next) => {
+binRouter.get('/login', (req, res) => { 
+    res.sendfile('');
+})
 
+binRouter.post('/login', (req, res) => {
+    if (db.findOne(req.body.name).password = req.body.password) {
+        res.cookie('password', 'ok!');
+        console.log(req.cookie);
+        res.redirect('localhost3000/bin/' + req.body.name);
+    }
+    else {
+        res.redirect('http://localhost:3000/bin/login/?valid=' + req.params.name);
+    }
+})
+
+
+binRouter.get('/:name', (req, res, next) => {
     if(req.params.name.split('.')[req.params.name.split('.').length - 1] === 'js' || req.params.name.split('.')[req.params.name.split('.').length - 1] === 'map' || req.params.name.split('.')[req.params.name.split('.').length - 1] === 'css') {
         return next('route');
-    } 
+    }
     if (db.findOne(req.params.name)) {
-        res.sendFile(path.resolve(__dirname, '../build/bin/index.html'));
+        if (db.findOne(req.params.name).password === '') {
+            res.sendFile(path.resolve(__dirname, '../build/bin/index.html'));
+        } else {
+            // redirect to passs word page
+            res.redirect('http://localhost:3000/bin/login/?valid=' + req.params.name);
+        }
     } else {
-        res.sendStatus(404).json({ error: 'This bin does not exist!!!' });
+        return next('route');
+        // res.sendStatus(404)json({ error: 'This bin does not exist!!!' });
     }
 })
 
