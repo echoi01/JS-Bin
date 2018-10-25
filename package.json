@@ -4,15 +4,29 @@
   "description": "Javascript Pair Programming Tool Built with React, Web Workers and Express.",
   "main": "Server/index.js",
   "dependencies": {
-    "express": "^4.16.3",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.0.4",
+    "clean-webpack-plugin": "^0.1.19",
+    "create-react-app": "^2.0.4",
+    "express": "^4.16.4",
+    "html-webpack-plugin": "^3.2.0",
     "parcel-bundler": "^1.9.7",
-    "socket.io": "^2.1.1"
+    "path": "^0.12.7",
+    "socket.io": "^2.1.1",
+    "webpack": "^4.23.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "babel-core": "^6.26.3",
+    "webpack-cli": "^3.1.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:admin":"parcel build React/Admin/index.html --out-dir build/admin",
-    "build:bin":"parcel build React/Bin/index.html --out-dir build/bin"
+    "build:admin": "parcel build React/Admin/index.html --out-dir build/admin",
+    "build:bin": "parcel build React/Bin/index.html --out-dir build/bin",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
