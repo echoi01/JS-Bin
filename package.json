@@ -4,35 +4,29 @@
   "description": "Javascript Pair Programming Tool Built with React, Web Workers and Express.",
   "main": "Server/index.js",
   "dependencies": {
-    "babel": "^6.23.0",
-    "babel-loader": "^8.0.4",
-    "clean-webpack-plugin": "^0.1.19",
-    "create-react-app": "^2.0.4",
-    "express": "^4.16.4",
-    "html-webpack-plugin": "^3.2.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
     "parcel-bundler": "^1.9.7",
-    "path": "^0.12.7",
-    "socket.io": "^2.1.1",
-    "webpack": "^4.23.0"
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "socket.io": "^2.1.1"
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.0.0",
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "babel-core": "^6.26.3",
-    "webpack-cli": "^3.1.2"
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:admin": "parcel build React/Admin/index.html --out-dir build/admin",
-    "build:bin": "parcel build React/Bin/index.html --out-dir build/bin",
-    "build": "webpack --mode production"
+    "start": "node Server/index.js",
+    "build:admin": "parcel build React/Admin/index.html --out-dir build/admin --public-url=/admin",
+    "build:bin": "parcel build React/Bin/index.html --out-dir build/bin --public-url=/bin",
+    "build:login": "parcel build React/ReactLogin/index.html --out-dir build/login --public-url=/login"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/G0ldenSp00n/JS-Bin.git"
   },
-  "author": "",
+  "author": "selcuk",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/G0ldenSp00n/JS-Bin/issues"
